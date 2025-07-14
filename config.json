@@ -73,6 +73,50 @@
       "api": "https://wwzy.tv/api.php/provide/vod",
       "name": "旺旺短剧"
     },
+     "xiaomaomi": {
+      "api": "https://zy.xiaomaomi.cc/api.php/provide/vod",
+      "name": "小猫咪资源"
+    },
+     "hwba": {
+      "api": "https://cjhwba.com/api.php/provide/vod",
+      "name": "华为吧资源"
+    },
+    "baidu": {
+      "api": "https://api.apibdzy.com/api.php/provide/vod",
+      "name": "百度云资源"
+    },
+    "fantuan": {
+      "api": "https://www.fantuan.tv/api.php/provide/vod",
+      "name": "饭团影视"
+    },
+    "cj": {
+      "api": "https://cj.lziapi.com/api.php/provide/vod",
+      "name": "影视工厂"
+    },
+    "qiqidys": {
+      "api": "https://www.qiqidys.com/api.php/provide/vod",
+      "name": "七七资源"
+    },
+    "subocj": {
+      "api": "https://subocj.com/api.php/provide/vod",
+      "name": "速播资源"
+    },
+    "fczy": {
+      "api": "https://api.fczy888.me/api.php/provide/vod",
+      "name": "蜂巢资源"
+    },
+     "qilin": {
+      "api": "http://www.qilinzyz.com/api.php/provide/vod",
+      "name": "麒麟资源"
+    },
+     "niuniuzy": {
+      "api": "https://api.niuniuzy.me/api.php/provide/vod",
+      "name": "黄瓜资源"
+    },
+    "avre": {
+      "api": "https://www.avre06.com/api.php/provide/vod",
+      "name": "牛牛资源"
+    },
     "ikun": {
       "api": "https://ikunzyapi.com/api.php/provide/vod",
       "name": "iKun资源"
