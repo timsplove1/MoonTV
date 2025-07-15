@@ -50,7 +50,7 @@ interface SiteConfig {
   Announcement: string;
   SearchDownstreamMaxPage: number;
   SiteInterfaceCacheTime: number;
-  SearchResultDefaultAggregate: boolean;
+  ImageProxy: string;
 }
 
 // 视频源数据类型
@@ -948,7 +948,7 @@ const SiteConfigComponent = ({ config }: { config: AdminConfig | null }) => {
     Announcement: '',
     SearchDownstreamMaxPage: 1,
     SiteInterfaceCacheTime: 7200,
-    SearchResultDefaultAggregate: false,
+    ImageProxy: '',
   });
   // 保存状态
   const [saving, setSaving] = useState(false);
@@ -960,7 +960,10 @@ const SiteConfigComponent = ({ config }: { config: AdminConfig | null }) => {
 
   useEffect(() => {
     if (config?.SiteConfig) {
-      setSiteSettings(config.SiteConfig);
+      setSiteSettings({
+        ...config.SiteConfig,
+        ImageProxy: config.SiteConfig.ImageProxy || '',
+      });
     }
   }, [config]);
 
@@ -1094,43 +1097,39 @@ const SiteConfigComponent = ({ config }: { config: AdminConfig | null }) => {
         />
       </div>
 
-      {/* 默认按标题和年份聚合 */}
-      <div className='flex items-center justify-between'>
+      {/* 图片代理 */}
+      <div>
         <label
-          className={`text-gray-700 dark:text-gray-300 ${
+          className={`block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 ${
             isD1Storage ? 'opacity-50' : ''
           }`}
         >
-          搜索结果默认按标题和年份聚合
+          图片代理前缀
           {isD1Storage && (
             <span className='ml-2 text-xs text-gray-500 dark:text-gray-400'>
               (D1 环境下不可修改)
             </span>
           )}
         </label>
-        <button
-          onClick={() =>
+        <input
+          type='text'
+          placeholder='例如: https://imageproxy.example.com/?url='
+          value={siteSettings.ImageProxy}
+          onChange={(e) =>
             !isD1Storage &&
             setSiteSettings((prev) => ({
               ...prev,
-              SearchResultDefaultAggregate: !prev.SearchResultDefaultAggregate,
+              ImageProxy: e.target.value,
             }))
           }
           disabled={isD1Storage}
-          className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 ${
-            siteSettings.SearchResultDefaultAggregate
-              ? 'bg-green-600'
-              : 'bg-gray-200 dark:bg-gray-700'
-          } ${isD1Storage ? 'opacity-50 cursor-not-allowed' : ''}`}
-        >
-          <span
-            className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
-              siteSettings.SearchResultDefaultAggregate
-                ? 'translate-x-6'
-                : 'translate-x-1'
-            }`}
-          />
-        </button>
+          className={`w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-green-500 focus:border-transparent ${
+            isD1Storage ? 'opacity-50 cursor-not-allowed' : ''
+          }`}
+        />
+        <p className='mt-1 text-xs text-gray-500 dark:text-gray-400'>
+          用于代理图片访问，解决跨域或访问限制问题。留空则不使用代理。
+        </p>
       </div>
 
       {/* 操作按钮 */}
