@@ -57,7 +57,7 @@
 | 语言      | TypeScript 4                                                                                          |
 | 播放器    | [ArtPlayer](https://github.com/zhw2590582/ArtPlayer) · [HLS.js](https://github.com/video-dev/hls.js/) |
 | 代码质量  | ESLint · Prettier · Jest                                                                              |
-| 部署      | Docker · Vercel                                                                                       |
+| 部署      | Docker · Vercel · CloudFlare pages                                                                                 |
 
 ## 部署
 
@@ -77,6 +77,8 @@
 部署完成后即可通过分配的域名访问，也可以绑定自定义域名。
 
 ### Cloudflare 部署
+
+**Cloudflare Pages 的环境变量尽量设置为密钥而非文本**
 
 #### 普通部署（localstorage）
 
